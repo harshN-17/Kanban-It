@@ -12,6 +12,7 @@ import { setBoards } from '../redux/boardSlice'
 import { setFavouriteList } from '../redux/favouriteSlice'
 
 import { io } from 'socket.io-client'
+import assets from '../assets'
 
 let timer
 const timeout = 500
@@ -54,7 +55,7 @@ const Board = () => {
         setIsFavourite(res.favourite)
         setIcon(res.icon)
       } catch (err) {
-        alert(err)
+        alert('getboard' + err)
       }
     }
     getBoard()
@@ -171,7 +172,7 @@ const Board = () => {
             isFavourite ? (
               <StarOutlinedIcon color='warning' />
             ) : (
-              <StarBorderOutlinedIcon />
+              <StarBorderOutlinedIcon style={{ color: assets.colors.tertiary }} />
             )
           }
         </IconButton>
@@ -194,7 +195,7 @@ const Board = () => {
             sx={{
               '& .MuiOutlinedInput-input': { padding: 0 },
               '& .MuiOutlinedInput-notchedOutline': { border: 'unset ' },
-              '& .MuiOutlinedInput-root': { fontSize: '2rem', fontWeight: '700' }
+              '& .MuiOutlinedInput-root': { fontSize: '2rem', fontWeight: '700', color: assets.colors.tertiary }
             }}
           />
           <TextField
@@ -207,10 +208,10 @@ const Board = () => {
             sx={{
               '& .MuiOutlinedInput-input': { padding: 0 },
               '& .MuiOutlinedInput-notchedOutline': { border: 'unset ' },
-              '& .MuiOutlinedInput-root': { fontSize: '0.8rem' }
+              '& .MuiOutlinedInput-root': { fontSize: '0.8rem', color: assets.colors.tertiary },
             }}
           />
-          <Box>Editors: {user.username}</Box>
+          {/* <Box>Editors: {user.username}</Box> */}
         </Box>
         <Box>
           {/* Kanban board */}

@@ -6,6 +6,7 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import sectionApi from '../../api/sectionApi'
 import taskApi from '../../api/taskApi'
 import TaskModal from './TaskModal'
+import assets from '../../assets'
 
 let timer
 const timeout = 500
@@ -126,12 +127,17 @@ const Kanban = props => {
         alignItems: 'center',
         justifyContent: 'space-between'
       }}>
-        <Button onClick={createSection}>
+        <Button 
+          onClick={createSection}
+          sx={{
+            // color: assets.colors.misc
+          }}
+        >
           Add section
         </Button>
-        <Typography variant='body2' fontWeight='700'>
+        {/* <Typography variant='body2' fontWeight='700'>
           {data.length} Sections
-        </Typography>
+        </Typography> */}
       </Box>
       <Divider sx={{ margin: '10px 0' }} />
       <DragDropContext onDragEnd={onDragEnd}>
@@ -143,7 +149,7 @@ const Kanban = props => {
         }}>
           {
             data.map(section => (
-              <div key={section.id} style={{ width: '300px' }}>
+              <div key={section.id} style={{  width: '300px' }}>
                 <Droppable key={section.id} droppableId={section.id}>
                   {(provided) => (
                     <Box
@@ -155,7 +161,7 @@ const Kanban = props => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        marginBottom: '10px'
+                        marginBottom: '10px',
                       }}>
                         <TextField
                           value={section.title}
@@ -166,7 +172,7 @@ const Kanban = props => {
                             flexGrow: 1,
                             '& .MuiOutlinedInput-input': { padding: 0 },
                             '& .MuiOutlinedInput-notchedOutline': { border: 'unset ' },
-                            '& .MuiOutlinedInput-root': { fontSize: '1rem', fontWeight: '700' }
+                            '& .MuiOutlinedInput-root': { fontSize: '1rem', fontWeight: '700', color: assets.colors.tertiary }
                           }}
                         />
                         <IconButton
@@ -204,6 +210,8 @@ const Kanban = props => {
                                 sx={{
                                   padding: '10px',
                                   marginBottom: '10px',
+                                  color: assets.colors.tertiary,
+                                  backgroundColor: assets.colors.secondary,
                                   cursor: snapshot.isDragging ? 'grab' : 'pointer!important'
                                 }}
                                 onClick={() => setSelectedTask(task)}
@@ -220,6 +228,7 @@ const Kanban = props => {
                     </Box>
                   )}
                 </Droppable>
+                
               </div>
             ))
           }

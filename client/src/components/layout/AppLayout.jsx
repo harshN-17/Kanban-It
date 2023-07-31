@@ -6,6 +6,7 @@ import authUtils from '../../utils/authUtils'
 import Loading from '../common/Loading'
 import Sidebar from '../common/Sidebar'
 import { setUser } from '../../redux/userSlice'
+import assets from '../../assets'
 
 const AppLayout = () => {
   const navigate = useNavigate()
@@ -32,7 +33,8 @@ const AppLayout = () => {
       <Loading fullHeight />
     ) : (
       <Box sx={{
-        display: 'flex'
+        display: 'flex',
+        backgroundColor: assets.colors.primary
       }}>
         <Sidebar />
         <Box sx={{

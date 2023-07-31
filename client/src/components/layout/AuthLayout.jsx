@@ -31,7 +31,8 @@ const AuthLayout = () => {
           marginTop: 8,
           display: 'flex',
           alignItems: 'center',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          // backgroundColor: 'red'
         }}>
           <img src={assets.images.logoDark} style={{ width: '100px' }} alt='app logo' />
           <Outlet />

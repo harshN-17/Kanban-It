@@ -94,7 +94,8 @@ const Sidebar = () => {
         sx={{
           width: sidebarWidth,
           height: '100vh',
-          backgroundColor: assets.colors.secondary
+          backgroundColor: assets.colors.secondary,
+          color: assets.colors.tertiary,
         }}
       >
         <ListItem>
@@ -108,7 +109,7 @@ const Sidebar = () => {
               {user.username}
             </Typography>
             <IconButton onClick={logout}>
-              <LogoutOutlinedIcon fontSize='small' />
+              <LogoutOutlinedIcon fontSize='small' style={{ color: assets.colors.tertiary }}/>
             </IconButton>
           </Box>
         </ListItem>
@@ -126,7 +127,7 @@ const Sidebar = () => {
               Personal  
             </Typography>
             <IconButton onClick={addBoard}>
-              <AddBoxOutlinedIcon fontSize='small' />
+              <AddBoxOutlinedIcon fontSize='small' style={{ color: assets.colors.tertiary }} />
             </IconButton>
           </Box>
         </ListItem>

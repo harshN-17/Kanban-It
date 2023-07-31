@@ -20,7 +20,7 @@ const FavouriteList = () => {
         dispatch(setFavouriteList(res))
         setIsLoading(false);
       } catch (err) {
-        alert(err)
+        alert('fav' + err)
       }
     }
     getBoards()
@@ -44,7 +44,7 @@ const FavouriteList = () => {
     try {
       await boardApi.updateFavouritePosition({ boards: newList })
     } catch (err) {
-      alert(err)
+      alert('board' + err)
     }
   }
 
