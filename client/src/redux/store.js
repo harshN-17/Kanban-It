@@ -3,6 +3,7 @@ import userSlice from "./userSlice";
 import favouriteSlice from "./favouriteSlice";
 import boardSlice from "./boardSlice";
 import loaderSlice from "./loaderSlice";
+import modeSlice from "./modeSlice";
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
         user: userSlice,
         board: boardSlice,
         favourite: favouriteSlice,
-        loader: loaderSlice
+        loader: loaderSlice,
+        mode: modeSlice,
     }
 })

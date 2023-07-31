@@ -7,6 +7,7 @@ import sectionApi from '../../api/sectionApi'
 import taskApi from '../../api/taskApi'
 import TaskModal from './TaskModal'
 import assets from '../../assets'
+import { useSelector } from 'react-redux'
 
 let timer
 const timeout = 500
@@ -14,7 +15,12 @@ const timeout = 500
 const Kanban = props => {
   const boardId = props.boardId
   const [data, setData] = useState([])
-  const [selectedTask, setSelectedTask] = useState(undefined)
+  const [selectedTask, setSelectedTask] = useState(undefined);
+  const mode = useSelector((state) => state.mode.value);
+
+  const secondary = mode ? assets.colors.secondary_dark : assets.colors.secondary_light;
+  const tertiary = mode ? assets.colors.tertiary_dark : assets.colors.tertiary_light;
+  const misc = mode ? assets.colors.misc_dark : assets.colors.misc_light;
 
   useEffect(() => {
     setData(props.data)
@@ -172,7 +178,7 @@ const Kanban = props => {
                             flexGrow: 1,
                             '& .MuiOutlinedInput-input': { padding: 0 },
                             '& .MuiOutlinedInput-notchedOutline': { border: 'unset ' },
-                            '& .MuiOutlinedInput-root': { fontSize: '1rem', fontWeight: '700', color: assets.colors.tertiary }
+                            '& .MuiOutlinedInput-root': { fontSize: '1rem', fontWeight: '700', color: misc }
                           }}
                         />
                         <IconButton
@@ -210,8 +216,8 @@ const Kanban = props => {
                                 sx={{
                                   padding: '10px',
                                   marginBottom: '10px',
-                                  color: assets.colors.tertiary,
-                                  backgroundColor: assets.colors.secondary,
+                                  color: tertiary,
+                                  backgroundColor: secondary,
                                   cursor: snapshot.isDragging ? 'grab' : 'pointer!important'
                                 }}
                                 onClick={() => setSelectedTask(task)}

@@ -33,6 +33,12 @@ const Board = () => {
   const user = useSelector((state) => state.user.value);
   const load = useSelector((state) => state.loader.value);
 
+  const mode = useSelector((state) => state.mode.value);
+
+  const tertiary = mode ? assets.colors.tertiary_dark : assets.colors.tertiary_light;
+  const misc = mode ? assets.colors.misc_dark : assets.colors.misc_light;
+
+
   // console.log(load);
 
   // console.log(favouriteList)
@@ -172,7 +178,7 @@ const Board = () => {
             isFavourite ? (
               <StarOutlinedIcon color='warning' />
             ) : (
-              <StarBorderOutlinedIcon style={{ color: assets.colors.tertiary }} />
+              <StarBorderOutlinedIcon style={{ tertiary }} />
             )
           }
         </IconButton>
@@ -195,7 +201,7 @@ const Board = () => {
             sx={{
               '& .MuiOutlinedInput-input': { padding: 0 },
               '& .MuiOutlinedInput-notchedOutline': { border: 'unset ' },
-              '& .MuiOutlinedInput-root': { fontSize: '2rem', fontWeight: '700', color: assets.colors.tertiary }
+              '& .MuiOutlinedInput-root': { fontSize: '2rem', fontWeight: '700', color: misc }
             }}
           />
           <TextField
@@ -208,7 +214,7 @@ const Board = () => {
             sx={{
               '& .MuiOutlinedInput-input': { padding: 0 },
               '& .MuiOutlinedInput-notchedOutline': { border: 'unset ' },
-              '& .MuiOutlinedInput-root': { fontSize: '0.8rem', color: assets.colors.tertiary },
+              '& .MuiOutlinedInput-root': { fontSize: '0.8rem', color: tertiary },
             }}
           />
           {/* <Box>Editors: {user.username}</Box> */}

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { useState, useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import authUtils from '../../utils/authUtils'
 import Loading from '../common/Loading'
 import Sidebar from '../common/Sidebar'
@@ -11,7 +11,11 @@ import assets from '../../assets'
 const AppLayout = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const mode = useSelector((state) => state.mode.value);
+
+  const primary = mode ? assets.colors.primary_dark : assets.colors.primary_light;
+
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -34,7 +38,7 @@ const AppLayout = () => {
     ) : (
       <Box sx={{
         display: 'flex',
-        backgroundColor: assets.colors.primary
+        backgroundColor: primary
       }}>
         <Sidebar />
         <Box sx={{
