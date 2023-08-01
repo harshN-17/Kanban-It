@@ -5,8 +5,12 @@ import Moment from 'moment'
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import taskApi from '../../api/taskApi'
+import { useSelector } from 'react-redux'
+import assets from '../../assets'
 
 import '../../css/custom-editor.css'
+
+
 
 const modalStyle = {
   outline: 'none',
@@ -32,6 +36,13 @@ const TaskModal = props => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const editorWrapperRef = useRef()
+  
+  const mode = useSelector((state) => state.mode.value);
+  
+  const primary = mode ? assets.colors.primary_dark : assets.colors.primary_light;
+  const secondary = mode ? assets.colors.secondary_dark : assets.colors.secondary_light;
+  const tertiary = mode ? assets.colors.tertiary_dark : assets.colors.tertiary_light;
+  const misc = mode ? assets.colors.misc_dark : assets.colors.misc_light;
 
   useEffect(() => {
     setTask(props.task)
@@ -42,7 +53,7 @@ const TaskModal = props => {
 
       updateEditorHeight()
     }
-  }, [props.task])
+  }, [props.task, mode])
 
   const updateEditorHeight = () => {
     setTimeout(() => {
@@ -120,7 +131,8 @@ const TaskModal = props => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-end',
-            width: '100%'
+            width: '100%',
+            backgroundColor: secondary
           }}>
             <IconButton variant='outlined' color='error' onClick={deleteTask}>
               <DeleteOutlinedIcon />
@@ -130,7 +142,8 @@ const TaskModal = props => {
             display: 'flex',
             height: '100%',
             flexDirection: 'column',
-            padding: '2rem 5rem 5rem'
+            padding: '2rem 5rem 5rem',
+            backgroundColor: secondary
           }}>
             <TextField
               value={title}
@@ -142,11 +155,11 @@ const TaskModal = props => {
                 width: '100%',
                 '& .MuiOutlinedInput-input': { padding: 0 },
                 '& .MuiOutlinedInput-notchedOutline': { border: 'unset ' },
-                '& .MuiOutlinedInput-root': { fontSize: '2.5rem', fontWeight: '700' },
+                '& .MuiOutlinedInput-root': { fontSize: '2.5rem', fontWeight: '700', color: tertiary },
                 marginBottom: '10px'
               }}
             />
-            <Typography variant='body2' fontWeight='700'>
+            <Typography variant='body2' fontWeight='700' color={tertiary} >
               {task !== undefined ? Moment(task.createdAt).format('YYYY-MM-DD') : ''}
             </Typography>
             <Divider sx={{ margin: '1.5rem 0' }} />
@@ -156,7 +169,8 @@ const TaskModal = props => {
                 position: 'relative',
                 height: '80%',
                 overflowX: 'hidden',
-                overflowY: 'auto'
+                overflowY: 'auto',
+                backgroundColor: primary
               }}
             >
               <CKEditor

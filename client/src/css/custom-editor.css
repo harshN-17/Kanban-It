@@ -2,6 +2,7 @@
     background-color: transparent;
     border: none;
     outline: none;
+    color: #A27B5C;
   }
   
   .ck.ck-editor__main>.ck-editor__editable.ck-focused {
@@ -28,7 +29,7 @@
   .ck.ck-button.ck-on:hover {
     background-color: transparent !important;
     cursor: pointer;
-    color: gray;
+    color: grey;
   }
   
   .ck-dropdown__panel .ck.ck-button.ck-off.ck-button__with-text {
